@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Sales Inquiry || [Your Domain]</title>
+        <title>Sales Inquiry || ujjanth.com </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -11,6 +11,15 @@
         <link rel="stylesheet" href="css/style.css" />
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+        <style>
+            .bazinga-message {
+                display: none;
+                font-size: 24px;
+                color: #ff6347;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+        </style>
     </head>
     <body>
 
@@ -34,9 +43,10 @@
                           </div>
                           <div class="pt-5">
                               <label for="name">
-                                  <a class="btn text-white bg-green btn-lg">Buy now for $49,999</a>
+                                  <a class="btn text-white bg-green btn-lg" id="buyNowBtn">Buy now for $49,999</a>
                               </label>
                           </div>
+                          <div id="bazingaMessage" class="bazinga-message animated">Bazinga! I'm not selling this domain.</div>
                       </div>
                     </div>
                     <div class="col-sm-6 offset-sm-6">
@@ -106,7 +116,8 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script>
-          $( "#main-offer-form" ).validate({
+          // Form validation
+          $("#main-offer-form").validate({
             errorClass: 'form-control-feedback',
             errorElement: 'div',
             highlight: function(element) {
@@ -150,6 +161,14 @@
                   maxlength: 'Message length must be less than 500 characters.'
                 }
               }
+          });
+
+          // Buy now button event handler
+          document.getElementById("buyNowBtn").addEventListener("click", function(e) {
+              e.preventDefault();
+              var bazingaMessage = document.getElementById("bazingaMessage");
+              bazingaMessage.style.display = "block";
+              bazingaMessage.classList.add("bounceIn");
           });
         </script>
     </body>
